@@ -29,7 +29,7 @@ export default function AvatarShowcase() {
                     Hover: scale lift ·{" "}
                     <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">ios.snappy</code>{" "}
                     · always{" "}
-                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded-full squircle</code>
+                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded-full</code>
                 </p>
             </div>
 

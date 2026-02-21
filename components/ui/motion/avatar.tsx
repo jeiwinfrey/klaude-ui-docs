@@ -29,7 +29,7 @@ const Avatar = React.forwardRef<
                 data-slot="avatar"
                 data-size={size}
                 className={cn(
-                    "group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full squircle select-none data-[size=lg]:size-10 data-[size=sm]:size-6",
+                    "group/avatar relative flex size-8 shrink-0 overflow-hidden rounded-full select-none data-[size=lg]:size-10 data-[size=sm]:size-6",
                     className
                 )}
                 // Hover: scale lift — ios.snappy
@@ -66,7 +66,7 @@ const AvatarFallback = React.forwardRef<
         ref={ref}
         data-slot="avatar-fallback"
         className={cn(
-            "bg-muted text-muted-foreground flex size-full items-center justify-center rounded-full squircle text-sm group-data-[size=sm]/avatar:text-xs",
+            "bg-muted text-muted-foreground flex size-full items-center justify-center rounded-full text-sm group-data-[size=sm]/avatar:text-xs",
             className
         )}
         {...props}
@@ -117,7 +117,7 @@ const AvatarGroupCount = React.forwardRef<
         ref={ref}
         data-slot="avatar-group-count"
         className={cn(
-            "bg-muted text-muted-foreground ring-background relative flex size-8 shrink-0 items-center justify-center rounded-full squircle text-sm ring-2 group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3",
+            "bg-muted text-muted-foreground ring-background relative flex size-8 shrink-0 items-center justify-center rounded-full text-sm ring-2 group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3",
             className
         )}
         {...props}

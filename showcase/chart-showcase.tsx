@@ -71,7 +71,7 @@ export default function ChartShowcase() {
                     Container entrance ·{" "}
                     <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">fade.base</code>{" "}
                     · Data stagger via Recharts internals · Tooltip{" "}
-                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded-xl squircle</code>
+                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded-xl</code>
                 </p>
             </div>
 

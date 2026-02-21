@@ -125,22 +125,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* ─── Squircle ──────────────────────────────────────────────────────────────
-   Applies iOS-style smooth corner geometry (superellipse) via the native
-   CSS `corner-shape` property (Chrome/Edge 139+).
-   Fallback: a superellipse-approximating border-radius for other browsers.
-   Usage: add the `squircle` class alongside any `rounded-*` class.
-   ─────────────────────────────────────────────────────────────────────────── */
-
-@utility squircle {
-  corner-shape: squircle;
-}
-
-/* Fallback for browsers without corner-shape support (Firefox, Safari) */
-@supports not (corner-shape: squircle) {
-  .squircle {
-    /* Approximate superellipse using asymmetric border-radius percentages */
-    border-radius: 30% / 30%;
-  }
-}
