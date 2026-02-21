@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "motion/react"
-import { Layers, Square, TriangleAlert, Tag, CircleUser, BarChart2, Loader } from "lucide-react"
+import { Layers, Square, TriangleAlert, Tag, CircleUser, BarChart2, Loader, AlignLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ios } from "@/lib/motion"
 
@@ -12,6 +12,7 @@ import BadgeShowcase from "@/showcase/badge-showcase"
 import AvatarShowcase from "@/showcase/avatar-showcase"
 import ChartShowcase from "@/showcase/chart-showcase"
 import SpinnerShowcase from "@/showcase/spinner-showcase"
+import TextareaShowcase from "@/showcase/textarea-showcase"
 
 // ─── Registry ────────────────────────────────────────────────────────────────
 
@@ -51,6 +52,12 @@ const COMPONENTS = [
     label: "Spinner",
     icon: Loader,
     component: SpinnerShowcase,
+  },
+  {
+    id: "textarea",
+    label: "Textarea",
+    icon: AlignLeft,
+    component: TextareaShowcase,
   },
 ] as const
 
