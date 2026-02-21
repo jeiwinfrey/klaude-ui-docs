@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "motion/react"
-import { Layers, Square, TriangleAlert, Tag, CircleUser } from "lucide-react"
+import { Layers, Square, TriangleAlert, Tag, CircleUser, BarChart2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ios } from "@/lib/motion"
 
@@ -10,6 +10,7 @@ import ButtonShowcase from "@/showcase/button-showcase"
 import AlertShowcase from "@/showcase/alert-showcase"
 import BadgeShowcase from "@/showcase/badge-showcase"
 import AvatarShowcase from "@/showcase/avatar-showcase"
+import ChartShowcase from "@/showcase/chart-showcase"
 
 // ─── Registry ────────────────────────────────────────────────────────────────
 
@@ -37,6 +38,12 @@ const COMPONENTS = [
     label: "Avatar",
     icon: CircleUser,
     component: AvatarShowcase,
+  },
+  {
+    id: "chart",
+    label: "Chart",
+    icon: BarChart2,
+    component: ChartShowcase,
   },
 ] as const
 
