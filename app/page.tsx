@@ -2,12 +2,13 @@
 
 import { useState } from "react"
 import { motion } from "motion/react"
-import { Layers, Square, TriangleAlert } from "lucide-react"
+import { Layers, Square, TriangleAlert, Tag } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ios } from "@/lib/motion"
 
 import ButtonShowcase from "@/showcase/button-showcase"
 import AlertShowcase from "@/showcase/alert-showcase"
+import BadgeShowcase from "@/showcase/badge-showcase"
 
 // ─── Registry ────────────────────────────────────────────────────────────────
 
@@ -23,6 +24,12 @@ const COMPONENTS = [
     label: "Alert",
     icon: TriangleAlert,
     component: AlertShowcase,
+  },
+  {
+    id: "badge",
+    label: "Badge",
+    icon: Tag,
+    component: BadgeShowcase,
   },
 ] as const
 
