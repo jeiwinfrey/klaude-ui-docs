@@ -3,7 +3,7 @@ import { ArrowRight, Trash2, Plus, Search } from "lucide-react"
 
 export default function ButtonShowcase() {
     return (
-        <main className="min-h-screen bg-background px-8 py-16 max-w-3xl mx-auto">
+        <div>
 
             {/* Header */}
             <div className="mb-12">
@@ -20,7 +20,7 @@ export default function ButtonShowcase() {
             </div>
 
             {/* Variants */}
-            <section className="mb-12">
+            <section className="mb-10">
                 <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
                     Variants
                 </h2>
@@ -35,7 +35,7 @@ export default function ButtonShowcase() {
             </section>
 
             {/* Sizes */}
-            <section className="mb-12">
+            <section className="mb-10">
                 <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
                     Sizes
                 </h2>
@@ -48,7 +48,7 @@ export default function ButtonShowcase() {
             </section>
 
             {/* With icons */}
-            <section className="mb-12">
+            <section className="mb-10">
                 <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
                     With icons
                 </h2>
@@ -74,6 +74,6 @@ export default function ButtonShowcase() {
                 </div>
             </section>
 
-        </main>
+        </div>
     )
 }
