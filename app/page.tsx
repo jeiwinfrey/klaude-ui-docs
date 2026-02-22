@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "motion/react"
-import { Layers, Square, TriangleAlert, Tag, CircleUser, BarChart2, Loader, AlignLeft, Table2, RectangleHorizontal } from "lucide-react"
+import { Layers, Square, TriangleAlert, Tag, CircleUser, BarChart2, Loader, AlignLeft, Table2, RectangleHorizontal, SplitSquareHorizontal } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ios } from "@/lib/motion"
 
@@ -15,6 +15,7 @@ import SpinnerShowcase from "@/showcase/spinner-showcase"
 import TextareaShowcase from "@/showcase/textarea-showcase"
 import TableShowcase from "@/showcase/table-showcase"
 import SkeletonShowcase from "@/showcase/skeleton-showcase"
+import SeparatorShowcase from "@/showcase/separator-showcase"
 
 // ─── Registry ────────────────────────────────────────────────────────────────
 
@@ -72,6 +73,12 @@ const COMPONENTS = [
     label: "Skeleton",
     icon: RectangleHorizontal,
     component: SkeletonShowcase,
+  },
+  {
+    id: "separator",
+    label: "Separator",
+    icon: SplitSquareHorizontal,
+    component: SeparatorShowcase,
   },
 ] as const
 
