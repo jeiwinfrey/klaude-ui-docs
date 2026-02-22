@@ -68,123 +68,77 @@ export default function ChartShowcase() {
                     Chart
                 </h1>
                 <p className="mt-2 text-muted-foreground text-sm">
-                    Container entrance ·{" "}
-                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">fade.base</code>{" "}
-                    · Data stagger via Recharts internals · Tooltip{" "}
-                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded-xl</code>
+                    Card wrapper · optional title/subtitle · frosted glass tooltip · pill legend ·{" "}
+                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">ios.spring</code>{" "}
+                    entrance
                 </p>
             </div>
 
             {/* Bar chart */}
-            <section className="mb-10">
-                <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
-                    Bar chart
-                </h2>
-                <ChartContainer config={barConfig}>
-                    <BarChart data={monthlyData}>
+            <section className="mb-6">
+                <ChartContainer
+                    config={barConfig}
+                    title="Monthly traffic"
+                    subtitle="Visitors vs. sessions — Jan to Jun"
+                >
+                    <BarChart data={monthlyData} barCategoryGap="30%">
                         <CartesianGrid vertical={false} strokeDasharray="3 3" />
-                        <XAxis
-                            dataKey="month"
-                            tickLine={false}
-                            axisLine={false}
-                            tickMargin={8}
-                        />
+                        <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
                         <YAxis tickLine={false} axisLine={false} tickMargin={8} />
                         <ChartTooltip content={<ChartTooltipContent />} />
                         <ChartLegend content={<ChartLegendContent />} />
-                        <Bar
-                            dataKey="visitors"
-                            fill="var(--color-visitors)"
-                            radius={[4, 4, 0, 0]}
-                            isAnimationActive
-                            animationDuration={600}
-                            animationEasing="ease-out"
-                        />
-                        <Bar
-                            dataKey="sessions"
-                            fill="var(--color-sessions)"
-                            radius={[4, 4, 0, 0]}
-                            isAnimationActive
-                            animationDuration={700}
-                            animationEasing="ease-out"
-                        />
+                        <Bar dataKey="visitors" fill="var(--color-visitors)" radius={[6, 6, 0, 0]}
+                            isAnimationActive animationDuration={600} animationEasing="ease-out" />
+                        <Bar dataKey="sessions" fill="var(--color-sessions)" radius={[6, 6, 0, 0]}
+                            isAnimationActive animationDuration={700} animationEasing="ease-out" />
                     </BarChart>
                 </ChartContainer>
             </section>
 
             {/* Line chart */}
-            <section className="mb-10">
-                <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
-                    Line chart
-                </h2>
-                <ChartContainer config={lineConfig}>
+            <section className="mb-6">
+                <ChartContainer
+                    config={lineConfig}
+                    title="Trend overview"
+                    subtitle="6-month growth across channels"
+                >
                     <LineChart data={monthlyData}>
                         <CartesianGrid vertical={false} strokeDasharray="3 3" />
-                        <XAxis
-                            dataKey="month"
-                            tickLine={false}
-                            axisLine={false}
-                            tickMargin={8}
-                        />
+                        <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
                         <YAxis tickLine={false} axisLine={false} tickMargin={8} />
                         <ChartTooltip content={<ChartTooltipContent />} />
                         <ChartLegend content={<ChartLegendContent />} />
-                        <Line
-                            type="monotone"
-                            dataKey="visitors"
-                            stroke="var(--color-visitors)"
-                            strokeWidth={2}
-                            dot={{ r: 3 }}
-                            isAnimationActive
-                            animationDuration={800}
-                            animationEasing="ease-out"
-                        />
-                        <Line
-                            type="monotone"
-                            dataKey="sessions"
-                            stroke="var(--color-sessions)"
-                            strokeWidth={2}
-                            dot={{ r: 3 }}
-                            isAnimationActive
-                            animationDuration={900}
-                            animationEasing="ease-out"
-                        />
+                        <Line type="monotone" dataKey="visitors" stroke="var(--color-visitors)"
+                            strokeWidth={2.5} dot={false}
+                            isAnimationActive animationDuration={800} animationEasing="ease-out" />
+                        <Line type="monotone" dataKey="sessions" stroke="var(--color-sessions)"
+                            strokeWidth={2.5} dot={false}
+                            isAnimationActive animationDuration={900} animationEasing="ease-out" />
                     </LineChart>
                 </ChartContainer>
             </section>
 
             {/* Area chart */}
             <section>
-                <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
-                    Area chart
-                </h2>
-                <ChartContainer config={areaConfig}>
+                <ChartContainer
+                    config={areaConfig}
+                    title="Revenue"
+                    subtitle="Monthly recurring revenue — Jan to Jun"
+                >
                     <AreaChart data={revenueData}>
                         <defs>
                             <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="var(--color-revenue)" stopOpacity={0.2} />
+                                <stop offset="5%" stopColor="var(--color-revenue)" stopOpacity={0.25} />
                                 <stop offset="95%" stopColor="var(--color-revenue)" stopOpacity={0} />
                             </linearGradient>
                         </defs>
                         <CartesianGrid vertical={false} strokeDasharray="3 3" />
-                        <XAxis
-                            dataKey="month"
-                            tickLine={false}
-                            axisLine={false}
-                            tickMargin={8}
-                        />
+                        <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
                         <YAxis tickLine={false} axisLine={false} tickMargin={8} />
                         <ChartTooltip content={<ChartTooltipContent />} />
-                        <Area
-                            type="monotone"
-                            dataKey="revenue"
-                            stroke="var(--color-revenue)"
-                            strokeWidth={2}
-                            fill="url(#colorRevenue)"
-                            isAnimationActive
-                            animationDuration={900}
-                            animationEasing="ease-out"
-                        />
+                        <Area type="monotone" dataKey="revenue" stroke="var(--color-revenue)"
+                            strokeWidth={2.5} fill="url(#colorRevenue)"
+                            isAnimationActive animationDuration={900} animationEasing="ease-out" />
                     </AreaChart>
                 </ChartContainer>
             </section>
