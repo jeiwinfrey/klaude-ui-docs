@@ -20,7 +20,7 @@ export default function AlertShowcase() {
                     Alert
                 </h1>
                 <p className="mt-2 text-muted-foreground text-sm">
-                    Filled tint · left accent bar · icon badge · 5 variants ·{" "}
+                    Filled tint · icon badge · 5 variants ·{" "}
                     <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">ios.snappy</code>{" "}
                     entrance
                 </p>
