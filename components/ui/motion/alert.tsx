@@ -53,7 +53,6 @@ export interface AlertProps extends React.ComponentPropsWithoutRef<"div"> {
 //
 // Design language:
 //   • Filled tinted background (variant-color/5) — no harsh border
-//   • 3 px left accent bar — the single visual anchor for the variant
 //   • Icon sits in a rounded-xl badge (variant-color/10 bg)
 //   • Entrance: scale 0.97 + y 6 + fade → ios.snappy (feels like iOS banner drop)
 
