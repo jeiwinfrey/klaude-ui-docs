@@ -9,8 +9,19 @@ import { ios } from "@/lib/motion"
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
+export type AvatarRounded = "none" | "md" | "lg" | "xl" | "full"
+
+const roundedMap: Record<AvatarRounded, string> = {
+    none: "rounded-none",
+    md: "rounded-md",
+    lg: "rounded-lg",
+    xl: "rounded-xl",
+    full: "rounded-full",
+}
+
 export interface AvatarProps extends React.ComponentPropsWithoutRef<"span"> {
     size?: "sm" | "default" | "lg"
+    rounded?: AvatarRounded
 }
 
 export interface AvatarBadgeProps extends React.ComponentPropsWithoutRef<"span"> {
@@ -23,8 +34,9 @@ export interface AvatarBadgeProps extends React.ComponentPropsWithoutRef<"span">
 // AvatarBadge is filtered to the outer layer so it's never clipped.
 
 const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
-    ({ className, size = "default", children, ...props }, ref) => {
+    ({ className, size = "default", rounded = "full", children, ...props }, ref) => {
         const reduce = useReducedMotion()
+        const rc = roundedMap[rounded]
 
         const badgeChildren = React.Children.toArray(children).filter(
             (child) => React.isValidElement(child) && child.type === AvatarBadge
@@ -39,8 +51,8 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
                 data-slot="avatar"
                 data-size={size}
                 className={cn(
-                    // rounded-full needed for ring shape in groups — overflow-hidden is on the inner layer
-                    "group/avatar relative inline-flex shrink-0 select-none rounded-full",
+                    "group/avatar relative inline-flex shrink-0 select-none",
+                    rc,
                     "size-8 data-[size=sm]:size-6 data-[size=lg]:size-10",
                     className
                 )}
@@ -49,7 +61,7 @@ const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
                 transition={reduce ? { duration: 0 } : ios.snappy}
                 {...(props as React.ComponentPropsWithoutRef<typeof motion.span>)}
             >
-                <AvatarPrimitive.Root className="size-full overflow-hidden rounded-full">
+                <AvatarPrimitive.Root className={cn("size-full overflow-hidden", rc)}>
                     {innerChildren}
                 </AvatarPrimitive.Root>
                 {badgeChildren}
@@ -82,7 +94,8 @@ const AvatarFallback = React.forwardRef<
         ref={ref}
         data-slot="avatar-fallback"
         className={cn(
-            "bg-muted text-muted-foreground flex size-full items-center justify-center rounded-full text-sm group-data-[size=sm]/avatar:text-xs",
+            // rounded-[inherit] picks up whatever rounded-* is on the outer Avatar
+            "bg-muted text-muted-foreground flex size-full items-center justify-center rounded-[inherit] text-sm group-data-[size=sm]/avatar:text-xs",
             className
         )}
         {...props}
