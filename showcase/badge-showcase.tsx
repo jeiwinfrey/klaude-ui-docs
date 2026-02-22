@@ -1,4 +1,5 @@
 import { Badge } from "@/components/ui/motion/badge"
+import { Spinner } from "@/components/ui/motion/spinner"
 import { Star, Zap, Shield, Bell, CheckCircle2 } from "lucide-react"
 
 export default function BadgeShowcase() {
@@ -48,6 +49,19 @@ export default function BadgeShowcase() {
                     <Badge variant="destructive"><Shield /> Blocked</Badge>
                     <Badge variant="outline"><Bell /> 3 alerts</Badge>
                     <Badge variant="ghost"><CheckCircle2 /> Done</Badge>
+                </div>
+            </section>
+
+            {/* With spinner */}
+            <section className="mb-10">
+                <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
+                    Loading state
+                </h2>
+                <div className="flex flex-wrap gap-3 items-center">
+                    <Badge><Spinner className="size-3" /> Syncing</Badge>
+                    <Badge variant="secondary"><Spinner className="size-3" /> Processing</Badge>
+                    <Badge variant="outline"><Spinner className="size-3" /> Pending</Badge>
+                    <Badge variant="destructive"><Spinner className="size-3" /> Retrying</Badge>
                 </div>
             </section>
 
