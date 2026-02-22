@@ -71,7 +71,12 @@ function Separator({
                 role={decorative ? undefined : "separator"}
                 aria-orientation={decorative ? undefined : orientation}
                 data-slot="separator"
-                className={cn("flex items-center gap-3", className)}
+                className={cn(
+                    "flex items-center gap-3",
+                    // Vertical: stack lines above/below label
+                    orientation === "vertical" && "flex-col",
+                    className
+                )}
             >
                 <motion.div className={cn(lineClass, "flex-1")} {...(enterProps as object)} />
                 <span className="shrink-0 text-xs text-muted-foreground">{label}</span>
