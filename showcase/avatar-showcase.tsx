@@ -29,8 +29,9 @@ export default function AvatarShowcase() {
                 <p className="mt-2 text-muted-foreground text-sm">
                     Hover: scale lift ·{" "}
                     <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">ios.snappy</code>{" "}
-                    · always{" "}
-                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded-full</code>
+                    · shape via{" "}
+                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded</code>{" "}
+                    prop
                 </p>
             </div>
 
@@ -47,6 +48,24 @@ export default function AvatarShowcase() {
                                 <AvatarFallback>SC</AvatarFallback>
                             </Avatar>
                             <span className="text-xs text-muted-foreground">{size}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Shape */}
+            <section className="mb-10">
+                <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
+                    Shape
+                </h2>
+                <div className="flex items-center gap-6">
+                    {(["none", "md", "lg", "xl", "full"] as const).map((r) => (
+                        <div key={r} className="flex flex-col items-center gap-3">
+                            <Avatar size="lg" rounded={r}>
+                                <AvatarImage src="https://github.com/shadcn.png" alt="shadcn" />
+                                <AvatarFallback>SC</AvatarFallback>
+                            </Avatar>
+                            <span className="text-xs text-muted-foreground">{r}</span>
                         </div>
                     ))}
                 </div>
