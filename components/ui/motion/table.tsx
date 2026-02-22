@@ -22,10 +22,21 @@ const bodyVariants = {
     visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
 }
 
+// Enter transition lives inside the variant — keeps it tween-only and isolated
+// from the spring used for whileHover. Spring config (stiffness/damping/mass)
+// is incompatible with the tween properties (duration/ease) needed here.
 const rowVariants = {
     hidden: { opacity: 0, y: 6 },
-    visible: { opacity: 1, y: 0 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
+    },
 }
+
+// Context lets TableFooter signal to TableRow that it should skip the stagger
+// variant chain and render statically — footer rows are structural, not content.
+const TableFooterContext = React.createContext(false)
 
 // ─── Table ────────────────────────────────────────────────────────────────────
 
@@ -82,14 +93,16 @@ function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
 
 function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
     return (
-        <tfoot
-            data-slot="table-footer"
-            className={cn(
-                "border-t border-border/40 bg-muted/60 text-sm font-medium",
-                className
-            )}
-            {...props}
-        />
+        <TableFooterContext.Provider value={true}>
+            <tfoot
+                data-slot="table-footer"
+                className={cn(
+                    "border-t border-border/40 bg-muted/60 text-sm font-medium",
+                    className
+                )}
+                {...props}
+            />
+        </TableFooterContext.Provider>
     )
 }
 
@@ -98,6 +111,8 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
 
 function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
     const reduce = useReducedMotion()
+    const isFooter = React.useContext(TableFooterContext)
+
     return (
         <motion.tr
             data-slot="table-row"
@@ -106,8 +121,12 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
                 "data-[state=selected]:bg-muted/60",
                 className
             )}
-            variants={reduce ? undefined : rowVariants}
-            transition={reduce ? { duration: 0 } : { ...ios.snappy, duration: 0.18 }}
+            // Footer rows skip the stagger variant chain entirely — they are
+            // structural summary rows, not content that should cascade in.
+            variants={reduce || isFooter ? undefined : rowVariants}
+            // whileHover uses ios.snappy (spring). The enter transition is now
+            // embedded in rowVariants.visible so it never mixes with spring config.
+            transition={reduce ? { duration: 0 } : ios.snappy}
             whileHover={reduce ? undefined : { backgroundColor: "hsl(var(--muted) / 0.5)" }}
             {...(props as React.ComponentPropsWithoutRef<typeof motion.tr>)}
         />
