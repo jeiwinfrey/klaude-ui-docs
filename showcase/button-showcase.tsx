@@ -4,7 +4,6 @@ import { ArrowRight, Trash2, Plus, Search } from "lucide-react"
 export default function ButtonShowcase() {
     return (
         <div>
-
             {/* Header */}
             <div className="mb-12">
                 <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-2">
@@ -14,8 +13,11 @@ export default function ButtonShowcase() {
                     Button
                 </h1>
                 <p className="mt-2 text-muted-foreground text-sm">
-                    iOS-spring press feedback · <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">ios.snappy</code> · always{" "}
-                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded-full</code>
+                    iOS-spring press feedback ·{" "}
+                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">ios.snappy</code>{" "}
+                    · shape via{" "}
+                    <code className="text-xs bg-muted px-1.5 py-0.5 rounded-md">rounded</code>{" "}
+                    prop
                 </p>
             </div>
 
@@ -47,6 +49,20 @@ export default function ButtonShowcase() {
                 </div>
             </section>
 
+            {/* Shape */}
+            <section className="mb-10">
+                <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
+                    Shape
+                </h2>
+                <div className="flex flex-wrap gap-3 items-center">
+                    <Button rounded="none">None</Button>
+                    <Button rounded="md">Medium</Button>
+                    <Button rounded="lg">Large (default)</Button>
+                    <Button rounded="xl">XL</Button>
+                    <Button rounded="full">Full</Button>
+                </div>
+            </section>
+
             {/* With icons */}
             <section className="mb-10">
                 <h2 className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-5">
@@ -56,7 +72,7 @@ export default function ButtonShowcase() {
                     <Button><Search /> Search</Button>
                     <Button variant="outline">Continue <ArrowRight /></Button>
                     <Button variant="destructive"><Trash2 /> Delete</Button>
-                    <Button variant="secondary"><Plus /> New item</Button>
+                    <Button variant="secondary" rounded="full"><Plus /> New item</Button>
                 </div>
             </section>
 
@@ -73,7 +89,6 @@ export default function ButtonShowcase() {
                     <Button variant="ghost" disabled>Ghost</Button>
                 </div>
             </section>
-
         </div>
     )
 }
